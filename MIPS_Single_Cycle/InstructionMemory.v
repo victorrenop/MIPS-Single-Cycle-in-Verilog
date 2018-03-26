@@ -36,7 +36,7 @@ module InstructionMemory (adress, InstructionOut, clock);
 				mem[20] = 32'b00010101011010110000000000000010; // r[11] = r[11] - Im(1)
 				mem[21] = 32'b00110100000010110000000000000010; // MEM[r[0] + Im(2)] = r[11]
 				mem[22] = 32'b10000000000000000000000000000010; // out reg[2]
-				*/
+				
 				
 				
 				//Insertion Sort
@@ -79,9 +79,9 @@ module InstructionMemory (adress, InstructionOut, clock);
 				mem[33] = 32'b10000000000000000000000000000101; // out reg[5]
 				mem[34] = 32'b10000000000000000000000000000110; // out reg[6]
 				mem[35] = 32'b10000000000000000000000000000111; // out reg[7]
+				*/
 				
 				
-				/*
 				//Todas as instrcoes
 				mem[0] = 32'b00000000000000000000000000000000; // nop
 				mem[1] = 32'b01111100000000010000000000000000; // in reg[1]
@@ -117,7 +117,7 @@ module InstructionMemory (adress, InstructionOut, clock);
 				mem[49] = 32'b01101100010000010000000000101100; // r[2] > r[1], PC = 44
 				mem[51] = 32'b01111000101000000000000000110111; // r[5] < r[0], PC = 55
 				mem[55] = 32'b10000000000000000000000000000001; // out reg[1]	
-				*/
+				
 				
 				flag <= 1;
 			end

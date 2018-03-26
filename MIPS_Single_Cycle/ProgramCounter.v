@@ -1,6 +1,6 @@
-module ProgramCounter (clock, reset, halt, adressIn, adressOut, PCSrc, zero, Jmp, Jr, mJr);
+module ProgramCounter (clock, reset, halt, adressIn, adressOut, PCSrc, zero, Jmp, Jr, Jal, mJr);
 
-	input clock, reset, halt, PCSrc, zero, Jmp, Jr;
+	input clock, reset, halt, PCSrc, zero, Jmp, Jr, Jal;
 	input [31:0] adressIn, mJr;
 	reg [31:0] adressOut;
 	wire [31:0] pcInc, pcIncB; // pcIncB eh o endereco de branch
@@ -16,7 +16,7 @@ module ProgramCounter (clock, reset, halt, adressIn, adressOut, PCSrc, zero, Jmp
 			else if (halt)
 				begin
 				end
-			else if ((PCSrc && zero) || Jmp || Jr)
+			else if ((PCSrc && zero) || Jmp || Jr || Jal)
 				begin
 					adressOut <= pcIncB;
 				end

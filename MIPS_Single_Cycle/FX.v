@@ -19,7 +19,7 @@ module FX ( botaoclk,clockruim,
 			  //zero,
 			  //rw,
 			  oflow_add,
-			  oflow_sub, neg2);
+			  oflow_sub, neg2, clk, B, adOut, adIn, data1, data2);
 			  //mw,
 			  //Rdst,
 			  //ASrc,
@@ -27,11 +27,12 @@ module FX ( botaoclk,clockruim,
 			  //PSrc,
 			  //Jmp,
 			  //Jr,
-			  //MO);
+			  //MO,
 
-	wire clk, botaosaida, botao_one;
+	input wire clk;//, botaosaida, botao_one; // antigamente estava somente wire
 	input wire [15:0] switches;
 	input clockruim, botaoclk;
+    input B; // Para testes no waveform
 	
 	//output reg [31:0] result1, result2, result3;
 	output [6:0] um, cem, mil, trilhao, quadrilhao; //milhao, bilhao, trilhao, quadrilhao;
@@ -43,10 +44,10 @@ module FX ( botaoclk,clockruim,
 	input rst;// entram no PC
    output wire hlt;
 	wire [31:0] Instruction; 				// sai da InstructionMemory
-	wire [9:0] adIn; 							// sai do PC e entra na InstructionMemory
-	wire [9:0] adOut;							// endereco de saida
+	output wire [9:0] adIn; 							// sai do PC e entra na InstructionMemory
+	output wire [9:0] adOut;							// endereco de saida
 	wire [4:0] mInstr; 						// saida do mux entre instructionMemory e RegBank
-	wire [31:0] data1, data2; 	// sai do RegBank
+	output wire [31:0] data1, data2; 	// sai do RegBank
 	wire [31:0] mAlu; 						// sai do mux entre ALU e Reg Bank
 	wire zero; 									// sai da ALU
 	wire [31:0] ALUres;					   // resultado da ALU
@@ -67,6 +68,7 @@ module FX ( botaoclk,clockruim,
 	wire PSrc;		 							// controle do MuxPC
 	wire Jmp; 									// controle do MuxJump
 	wire Jr; 									// controle do MuxJr
+    wire Jal;
 	wire MO;
 	wire [31:0] do;
 		
@@ -79,6 +81,7 @@ module FX ( botaoclk,clockruim,
 									.zero(zero),
 									.Jmp(Jmp),
 									.Jr(Jr),
+                                    .Jal(Jal),
 									.mJr(mJr));
 						
 	InstructionMemory IM 	(.adress(adOut),
@@ -92,7 +95,9 @@ module FX ( botaoclk,clockruim,
 									.RegWrite(rw),
 									.ReadData1(data1),
 									.ReadData2(data2),
-									.clock(clk));
+									.clock(clk),
+                                    .PC(adOut),
+                                    .Jal(Jal));
 						  
 	ALU OP 						(.OPcode(ALUop),
 									 .op1(data1),
@@ -139,6 +144,7 @@ module FX ( botaoclk,clockruim,
 	MuxJr MJR					(.MJ(mJump),
 									 .Reg(data1),
 									 .JumpReg(Jr),
+                                     .Jal(Jal),
 									 .MuxOut(mJr));
 									 
 	MuxIm MIM					(.Imediate(Instruction[15:0]),
@@ -193,12 +199,14 @@ module FX ( botaoclk,clockruim,
 									 .Jr(Jr),
 									 .ALUop(ALUop),
 									 .halt(hlt),
-									 .flag(botao_one),
+									 //.flag(botao_one),
+                                     .flag(B),
 									 .in(switches),
 									 .out(out),
-									 .MO(MO));
+									 .MO(MO),
+                                     .Jal(Jal));
 									 
-	DeBounce_v DBCE			(.clk(clk),
+	/*DeBounce_v DBCE			        (.clk(clk),
 									 .n_reset(1'b1),
 									 .button_in(botaoclk),
 									 .DB_out(botaosaida)); 
@@ -208,7 +216,7 @@ module FX ( botaoclk,clockruim,
 									 
 	one_shot ON					(.clk(clk),
 									 .pulse(botaosaida),
-									 .clkout(botao_one));
+									 .clkout(botao_one));*/
 									 
 	
 endmodule	
