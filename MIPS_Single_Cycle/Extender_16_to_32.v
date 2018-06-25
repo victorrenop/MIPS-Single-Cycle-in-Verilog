@@ -13,5 +13,3 @@ module Extender_16_to_32 (ExIn, ExOut);
 			end
 
 endmodule	
-	
-	

@@ -25,6 +25,22 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							MO = 1'b0;
 							halt = 1'b0;
 						end 
+					6'b000001: // halt
+						begin
+							RW = 1'b0;
+							MW = 1'b0;
+							RDst = 1'b0;
+							ASrc = 1'b0;
+							MTG = 1'b0;
+							PSrc = 1'b0;
+							Jmp = 1'b0;
+							Jr = 1'b0;
+                     Jal = 1'b0;
+							ALUop = 5'bxxxxx;
+							out = 1'b0;
+							MO = 1'b0;
+							halt = 1'b1;
+						end 
 					6'b000010: // add
 						begin
 							RW = 1'b1;
@@ -243,7 +259,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							PSrc = 1'b0;
 							Jmp = 1'b0;
 							Jr = 1'b1;
-                            Jal = 1'b0;
+                     Jal = 1'b0;
 							ALUop = 5'bxxxxx;
 							out = 1'b0;
 							MO = 1'b0;
@@ -372,7 +388,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01111;
+							ALUop = 5'b01100;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -388,7 +404,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01100;
+							ALUop = 5'b01111;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -404,7 +420,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01111;
+							ALUop = 5'b01100;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -420,7 +436,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01100;
+							ALUop = 5'b01111;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -436,7 +452,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01010;
+							ALUop = 5'b01011;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -452,7 +468,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01011;
+							ALUop = 5'b01010;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -468,7 +484,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01010;
+							ALUop = 5'b01011;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -484,7 +500,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							Jmp = 1'b0;
 							Jr = 1'b0;
                             Jal = 1'b0;
-							ALUop = 5'b01011;
+							ALUop = 5'b01010;
 							out = 1'b0;
 							MO = 1'b0;
 							halt = 1'b0;
@@ -514,7 +530,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							MW = 1'b0;
 							RDst = 1'b0;
 							ASrc = 1'b1;
-							MTG = 1'b0;
+							MTG = 1'b1;
 							PSrc = 1'b0;
 							Jmp = 1'b0;
 							Jr = 1'b0;
@@ -529,10 +545,10 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 						end
                 6'b100001: //jal
 						begin
-							RW = 1'b0;
+							RW = 1'b1;
 							MW = 1'b0;
 							RDst = 1'b0;
-							ASrc = 1'b1;
+							ASrc = 1'b0;
 							MTG = 1'b0;
 							PSrc = 1'b0;
 							Jmp = 1'b0;

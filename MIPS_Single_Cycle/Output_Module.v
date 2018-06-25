@@ -8,8 +8,8 @@ module Output_Module (clock, adress, writedata, dataout, out, MemWrite, rst);
 	
 	always @(posedge clock)
 		begin
-			mem[0] = 32'b0;
-			if (MemWrite)
+			//mem[0] = 32'b0;
+			if (MemWrite && adress >= 0)
 				mem[adress] = writedata;
 			else if (out)
 				dataout = mem[adress];

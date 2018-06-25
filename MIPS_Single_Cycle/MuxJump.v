@@ -1,12 +1,12 @@
-module MuxJump (MPC, JumpAdress, Jmp, MuxOut);
+module MuxJump (MPC, JumpAdress, Jmp, Jal, MuxOut);
 
 	input [31:0] MPC, JumpAdress;
-	input Jmp;
+	input Jmp, Jal;
 	output reg [31:0] MuxOut;
 	
 	always@(*)
 		begin 
-			if (Jmp)
+			if (Jmp || Jal)
 				MuxOut = JumpAdress;
 			else
 				MuxOut = MPC;

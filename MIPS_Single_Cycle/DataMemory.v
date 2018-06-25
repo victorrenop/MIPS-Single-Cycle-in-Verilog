@@ -1,24 +1,27 @@
-module DataMemory (clock, WriteData, MemWrite, DataMemoryOut, adress);
+module DataMemory (clock, WriteData, MemWrite, DataMemoryOut, adress, autoclock);
 
-	input [31:0] WriteData, adress;
-	input clock, MemWrite;
-	output [31:0] DataMemoryOut;
+	input signed [31:0] WriteData, adress;
+	input clock, MemWrite, autoclock;
+	output reg signed [31:0] DataMemoryOut;
 	
-	reg[31:0] memory [31:0];
-    reg[31:0] stack  [31:0];
+	reg[31:0] memory [40:0];
+	reg[31:0] stack  [40:0];
 	
 	always @(posedge clock)
 		begin
 			if (MemWrite)
             begin
                 if (adress < 0)
-				    stack[33 - adress] = WriteData;
+						  stack[40 + adress] = WriteData;
                 else
                     memory[adress] = WriteData;
             end
 		end
-	
-	assign DataMemoryOut= memory [adress];
+		
+		always@( posedge autoclock )
+		begin
+			DataMemoryOut = adress < 0 ? stack[40+adress] : memory[adress];
+		end
 
 endmodule
 	

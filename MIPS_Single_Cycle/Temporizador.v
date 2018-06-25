@@ -5,7 +5,7 @@ module Temporizador(clk_auto, clk);
 	
 	always@(posedge clk_auto)
 		begin
-			if(cont==1_000_000) //25'b1011111010111100001000000//1s
+			if(cont==1_000_0) //25'b1011111010111100001000000//1s
 				begin
 					cont <= 0; //registrador usa nao bloqueante (<=)
 					clk = ~clk;
