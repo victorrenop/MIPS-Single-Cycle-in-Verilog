@@ -76,7 +76,8 @@ module FX ( botaoclk,clockruim,
 	InstructionMemory IM 			(.adress(adOut),
 									.InstructionOut(Instruction),
 									.clock(clk),
-									.autoclock(clockruim));
+									.autoclock(clockruim),
+									.rst(rst));
 								
 	RegisterBank RB 				(.Reg1(Instruction[25:21]),
 									.Reg2(Instruction[20:16]),
@@ -144,12 +145,13 @@ module FX ( botaoclk,clockruim,
 									 .MO(MO));
 									 
 	Output_Module OM				(.clock(clk),
+									 .auto(clockruim),
 									 .adress(ALUres),
 									 .writedata(data2),
 									 .dataout(do),
 									 .out(out),
 									 .MemWrite(mw),
-									 .rst(rst));
+									 .datain(do));
 									 
 	Displays_Final DF				(.binary(do),
 									 .um(um),
