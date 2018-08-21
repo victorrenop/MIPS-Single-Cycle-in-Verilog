@@ -6,7 +6,7 @@ module FX ( botaoclk,clockruim,
 			  mil, neg,
 			  trilhao, 
 			  quadrilhao,  
-			  ,hlt,
+			  hlt,
 			  oflow_add,
 			  oflow_sub, neg2);
 
@@ -27,6 +27,7 @@ module FX ( botaoclk,clockruim,
 	output wire out;							// Sinaliza instrucao de saida
 	output wire hlt;							// Sinaliza halt do processador		
 	output wire oflow_add, oflow_sub;			// sinais de overflow
+	wire [6:0] milhao1, bilhao1, trilhao1, quadrilhao1, mil1;
 
 	// Dados dos modulos
 
@@ -46,7 +47,7 @@ module FX ( botaoclk,clockruim,
 	wire [31:0] mJr; 							// mux que entra o mJump e o endereco de reg;
 	wire [15:0] mMim;							// saida do mux de imediato
 	wire [4:0] ALUop;							// opcode da ALU fornecido pela UC
-	wire [31:0] do;								// saida do output module
+	wire [31:0] dout;								// saida do output module
 
 	// Sinais de Controle
 
@@ -148,12 +149,12 @@ module FX ( botaoclk,clockruim,
 									 .auto(clockruim),
 									 .adress(ALUres),
 									 .writedata(data2),
-									 .dataout(do),
+									 .dataout(dout),
 									 .out(out),
 									 .MemWrite(mw),
-									 .datain(do));
+									 .datain(dout));
 									 
-	Displays_Final DF				(.binary(do),
+	Displays_Final DF				(.binary(dout),
 									 .um(um),
 									 .cem(cem),
 									 .mil(mil),

@@ -8,6 +8,19 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 	
 	always @(*)
 		begin
+		RW = 1'b0;
+		MW = 1'b0;
+		RDst = 1'b0;
+		ASrc = 1'b0;
+		MTG = 1'b0;
+		PSrc = 1'b0;
+		Jmp = 1'b0;
+		Jr = 1'b0;
+		Jal = 1'b0;
+		ALUop = 5'b00000;
+		out = 1'b0;
+		MO = 1'b0;
+		halt = 1'b0;
 			case (OPcode)
 					6'b000000: // nop
 						begin
@@ -19,7 +32,7 @@ module ControladorHumano (OPcode, RW, MW, RDst, ASrc, MTG, PSrc, Jmp, Jr, ALUop,
 							PSrc = 1'b0;
 							Jmp = 1'b0;
 							Jr = 1'b0;
-                            Jal = 1'b0;
+                     Jal = 1'b0;
 							ALUop = 5'bxxxxx;
 							out = 1'b0;
 							MO = 1'b0;

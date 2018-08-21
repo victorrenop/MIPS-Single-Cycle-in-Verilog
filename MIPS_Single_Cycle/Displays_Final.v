@@ -1,4 +1,4 @@
-module Displays_Final (binary, um, cem, mil,neg, milhao, bilhao, trilhao, quadrilhao, neg, out);
+module Displays_Final (binary, um, cem, mil,neg, milhao, bilhao, trilhao, quadrilhao, out);
 
 	input [31:0] binary; // Entrada em binarios que deve ser mostrada no display
 	output neg;
