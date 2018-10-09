@@ -1,0 +1,35 @@
+000000 Nop	Ciclo Vazio
+000001 Halt	Para Processamento
+000010 Add	Soma
+000011 Addi	Soma Imediato
+000100 Sub	Subtração
+000101 Subi	Subtração Imediato
+000110 Mul	Multiplicação
+000111 Div	Divisão
+001000 Slt	Set Less Than
+001001 Shr	Desloca Direita
+001010 Shl	Desloca Esquerda
+001011 Lw	Carrega Palavra
+001100 Li	Carrega Imediato
+001101 Sw	Guarda Palavra
+001110 Jump	Salto para Endereço
+001111 Jr	Salto para Registrador
+010000 Xor	Xor Bit a Bit
+010001 And	And Bit a Bit
+010010 Or	Or Bit a Bit
+010011 Not	Not Bit a Bit
+010100 Xori	Xor Imediato
+010101 Andi	And Imediato
+010110 Ori	Or Imediato
+010111 Beq	Branch se Igual
+011000 Bneq	Branch se Diferente
+011001 Beqz	Branch se Igual a Zero
+011010 Bnez	Branch se Diferente de Zero
+011011 Bgt	Branch se Maior
+011100 Blt 	Branch se Menor
+011101 Bgtz	Branch se Maior que Zero
+011110 Bltz	Branch se Menor que Zero
+011111 In	Entrada
+100000 Out	Saída
+100001 Jal	Jump and Link
+100010 Cpy	Cópia de Dados
