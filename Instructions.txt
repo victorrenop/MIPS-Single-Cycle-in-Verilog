@@ -33,3 +33,6 @@
 100000 Out	Saída
 100001 Jal	Jump and Link
 100010 Cpy	Cópia de Dados
+100011 Tms	Set interrupt timer
+100100 Trst	Reset interrupt timer
+100101 Ctx	Context switch
