@@ -1,5 +1,6 @@
 *.vwf
 *.bak
+*.qws
 .qsys_edit/
 db/
 incremental_db/
