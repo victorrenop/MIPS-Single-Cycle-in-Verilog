@@ -25,7 +25,7 @@ File *Processador.qsf* contains all pin mapping for Altera DE2-115 FPGA board.
 
 To run this project:
 
-- Open your Quartus versiion;
+- Open your Quartus version;
 - Click on "open project";
 - Select "Processador.qpf" as your project file;
 
