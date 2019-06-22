@@ -54,7 +54,6 @@ set_location_assignment PIN_Y23 -to rst
 set_location_assignment PIN_M23 -to botaoclk
 set_location_assignment PIN_G16 -to out
 set_location_assignment PIN_H15 -to hlt
-set_location_assignment PIN_Y2 -to clockruim
 set_location_assignment PIN_G15 -to oflow_add
 set_location_assignment PIN_F15 -to oflow_sub
 set_location_assignment PIN_AA22 -to switches[15]
@@ -216,4 +215,5 @@ set_global_assignment -name VERILOG_FILE ControlModules/InterruptionController.v
 set_global_assignment -name VERILOG_FILE ControlModules/instructionWriter.v
 set_global_assignment -name VERILOG_FILE ControlModules/ControladorHumano.v
 set_global_assignment -name VERILOG_FILE ArithmeticModules/ALU.v
+set_location_assignment PIN_Y2 -to autoclock
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
