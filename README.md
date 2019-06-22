@@ -43,7 +43,7 @@ This project already comes with the BIOS program and the OS in it's hard drive f
 
 Basic specifications:
 
-- 500Hz write clock;
+- 500Hz processor (instruction execution and data writing) clock;
 - 50MHz read clock;
 - 32bits instruction and data width;
 - Resizable memory to fit bigger projects;
