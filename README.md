@@ -61,4 +61,4 @@ Altera DE2-115 FPGA board pin usage:
 ## Contributing
 This is a work in progress, some files and descriptions are in need of an update and other components are not in English, requiring aditional updates aswel.
 
-Fell free to fork this project and make pull requests too. 
+Feel free to fork this project and make pull requests too. 
